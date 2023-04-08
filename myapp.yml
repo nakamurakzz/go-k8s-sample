@@ -15,3 +15,13 @@ spec:
       containers: # Podに含めるコンテナのリスト
       - image: docker.io/nginx:latest
         name: myapp
+        env:
+        - name: MY_ENV
+          value: World!!
+        volumeMounts:
+        - name: myapp-config
+          mountPath: /etc/nginx/templates
+      volumes:
+      - name: myapp-config
+        configMap:
+          name: myapp-config

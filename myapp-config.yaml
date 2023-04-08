@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: # ConfigMapのメタデータ
+  name: myapp-config
+data: # ConfigMapのデータ
+  default.conf.template: | # キーがファイル名、値がファイルの内容
+    server {
+      location / {
+        return 200 'Hello $MY_ENV';
+        add_header Content-Type text/plain;
+      }
+    }
